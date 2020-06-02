@@ -1,4 +1,4 @@
-name: 'Docker Build and Publish'
+name: 'Publish'
 
 on:
   push:
@@ -7,14 +7,15 @@ on:
 
 jobs:
   Build:
+    name: Build and Publish
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Build
+    - name: Build & Publish
       uses: docker/build-push-action@v1.1.0
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        repository: OptionAlpaca/terraform-quality-gate
-        tags: latest
+        repository: optionalpaca/terraform-quality-gate
+        tag_with_ref: true

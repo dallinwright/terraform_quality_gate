@@ -21,7 +21,7 @@ FROM alpine:3.11 as prod
 
 MAINTAINER "Dallin Wright"
 
-RUN apk add --no-cache ca-certificates
+RUN apk add --no-cache ca-certificates python3 py3-pip
 
 COPY --from=install /tflint /usr/local/bin
 COPY --from=install /terraform /usr/local/bin
@@ -30,7 +30,7 @@ COPY --from=install /terraform /usr/local/bin
 WORKDIR /github/workspace
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
-COPY entrypoint.sh /entrypoint.sh
+COPY entrypoint.py /entrypoint.py
 
-# Code file to execute when the docker container starts up (`entrypoint.sh`)
-ENTRYPOINT ["/entrypoint.sh"]
+# Code file to execute when the docker container starts up (`entrypoint.py`)
+ENTRYPOINT ["/entrypoint.py"]

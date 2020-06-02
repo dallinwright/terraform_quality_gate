@@ -1,0 +1,10 @@
+# action.yml
+name: 'Terraform Quality Gate'
+description: 'Lint, Static Analysis and Testing of Terraform code'
+author: 'Dallin Wright'
+branding:
+  icon: 'award'
+  color: 'purple'
+runs:
+  using: 'docker'
+  image: 'docker://optionalpaca/tflint'

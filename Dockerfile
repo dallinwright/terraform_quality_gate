@@ -21,7 +21,7 @@ FROM alpine:latest as prod
 
 MAINTAINER "Dallin Wright"
 
-RUN apk add --no-cache ca-certificates python3 py3-pip go
+RUN apk add --no-cache ca-certificates python3 py3-pip go git
 
 COPY --from=install /tflint /usr/local/bin
 COPY --from=install /terraform /usr/local/bin

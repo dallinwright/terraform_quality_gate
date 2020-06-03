@@ -3,10 +3,21 @@
 
 Terraform quality gate for Infrastructure-as-Code
 
+### Example usage
+
+```yaml
+- name: Terraform Quality Gate
+  uses: OptionAlpaca/terraform_quality_gate@0.1.1
+  with:
+    terratest: 'full'
+```
+
+### Arguments
+terratest: `none` or `full`
+
 ### Purpose
 
 This docker image and subsequent github action encapsulate various stages and best practices common to infrastructure CI and CD. Mainly the current iteration addresses the following.
-
 
 #### Linting
 By using the build in `terraform fmt -check` command, we verify that the file is tidy, complies to terraform file format standards, and does not contain any easy to spot syntax errors.

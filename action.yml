@@ -5,6 +5,13 @@ author: 'Dallin Wright'
 branding:
   icon: 'award'
   color: 'purple'
+inputs:
+  terratest:
+    description: 'Should include Terratests'
+    required: false
+    default: 'none'
 runs:
   using: 'docker'
   image: 'docker://optionalpaca/terraform-quality-gate'
+  args:
+    - ${{ inputs.terratest }}

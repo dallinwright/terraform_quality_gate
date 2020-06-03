@@ -17,11 +17,11 @@ RUN curl -L \
   unzip tflint.zip && \
   rm tflint.zip
 
-FROM alpine:3.11 as prod
+FROM alpine:latest as prod
 
 MAINTAINER "Dallin Wright"
 
-RUN apk add --no-cache ca-certificates python3 py3-pip
+RUN apk add --no-cache ca-certificates python3 py3-pip go
 
 COPY --from=install /tflint /usr/local/bin
 COPY --from=install /terraform /usr/local/bin

@@ -2,6 +2,7 @@
 import subprocess
 import sys
 import logging
+import argparse
 
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
@@ -25,6 +26,10 @@ def call_os_command(command):
 
 
 def main():
+    parser = argparse.ArgumentParser(description='Process some integers.')
+    parser.add_argument('terratest', help='Whether we should include terratests', default='none')
+    args = parser.parse_args()
+
     stage = 'Terraform Format Check (terraform fmt)'
     logging.info('Calling {0}'.format(stage))
     call_os_command(['terraform', '-v'])
@@ -34,6 +39,13 @@ def main():
     logging.info('Calling {0}'.format(stage))
     call_os_command(['tflint', '-v'])
     call_os_command(['tflint'])
+
+    if args.terratest != 'none':
+        stage = 'Terraform Integration Testing (terratest)'
+        logging.info('Calling {0}'.format(stage))
+        call_os_command(['go', 'test', '-v', './tests'])
+
+    sys.exit(0)
 
 
 if __name__ == "__main__":

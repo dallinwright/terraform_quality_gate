@@ -40,8 +40,12 @@ def main():
     call_os_command(['tflint', '-v'])
     call_os_command(['tflint'])
 
-    if args.terratest != 'none':
+    if args.terratest == 'full':
         stage = 'Terraform Integration Testing (terratest)'
+        logging.info('Installing go dependencies')
+        call_os_command(['go', 'get', '-v', 'github.com/gruntwork-io/terratest/modules/terraform'])
+        call_os_command(['go', 'get', '-v', 'github.com/stretchr/testify/assert'])
+
         logging.info('Calling {0}'.format(stage))
         call_os_command(['go', 'test', '-v', './tests'])
 

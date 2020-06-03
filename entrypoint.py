@@ -6,7 +6,7 @@ import sys
 import logging
 import argparse
 
-terraform_token_file = "/Users/dallinwright/.terraform.d/credentials.tfrc.json"
+terraform_token_file = "/github/home/.terraform.d/credentials.tfrc.json"
 
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s',

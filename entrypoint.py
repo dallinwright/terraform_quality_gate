@@ -86,7 +86,7 @@ def main():
     call_os_command(['tflint', '-v'])
     call_os_command(['tflint'])
 
-    if args.terratest == 'full':
+    if args.terratest == 'full' and args.token:
         logging.info('Writing auth token')
         write_token(terraform_token_file, args.token)
 

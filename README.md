@@ -10,7 +10,7 @@ Terraform quality gate for Infrastructure-as-Code
   uses: OptionAlpaca/terraform_quality_gate@0.1.1
   with:
     terratest: 'full'
-    terraform_cloud_token: 'xxxxxxxxxxxxxxxxxxxxxx'
+    token: 'xxxxxxxxxxxxxxxxxxxxxx'
 ```
 
 ### Arguments

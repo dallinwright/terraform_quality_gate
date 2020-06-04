@@ -10,10 +10,12 @@ Terraform quality gate for Infrastructure-as-Code
   uses: OptionAlpaca/terraform_quality_gate@0.1.1
   with:
     terratest: 'full'
+    terraform_cloud_token: 'xxxxxxxxxxxxxxxxxxxxxx'
 ```
 
 ### Arguments
 terratest: `none` or `full`
+terraform_cloud_token: Terraform token obtained from terraform login. Used for writing auth file as required. We suggest storing it in a github secret. Required if using terratest full.
 
 ### Purpose
 
@@ -27,5 +29,6 @@ Linting catches style errors but it very limited in scope, to this end, we imple
 
 This tool goes much further and can spot compilation and errors in how terraform will extrapolate values and calculate various things. This tool is indespensable in the CI process.
 
-#### Future Stages
-In development is the integration of [`terratest`](https://github.com/gruntwork-io/terratest) integration testing library. By supplying valid AWS credentials (only planned on supported provider) you can test your infrastructure implmentations and see the speed, quality, and outcomes you can expect without deploying the infrastructure directly to your target environments.
+#### Roadmap
+Adding flexibility to other remote backends besides terraform cloud.
+Adding unit/integration testing for `entrypoint.py`

@@ -71,9 +71,14 @@ def main():
         help='Whether we should include terratests',
         default='none')
     parser.add_argument(
-        'token',
-        nargs='?',
+        '--terraform_cloud_token',
         help='Cloud authentication token for terraform cloud, required if using terratest full')
+    parser.add_argument(
+        '--aws_access_key_id',
+        help='AWS Access Key ID')
+    parser.add_argument(
+        '--aws_secret_access_key',
+        help='AWS Secret Access Key')
     args = parser.parse_args()
 
     stage = 'Terraform Format Check (terraform fmt)'
@@ -86,9 +91,9 @@ def main():
     call_os_command(['tflint', '-v'])
     call_os_command(['tflint'])
 
-    if args.terratest == 'full' and args.token:
+    if args.terratest == 'full' and args.terraform_cloud_token:
         logging.info('Writing auth token')
-        write_token(terraform_token_file, args.token)
+        write_token(terraform_token_file, args.terraform_cloud_token)
 
         logging.info('Installing go dependencies')
         call_os_command(

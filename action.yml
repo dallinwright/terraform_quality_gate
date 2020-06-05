@@ -8,11 +8,21 @@ branding:
 inputs:
   terratest:
     description: 'Should include Terratests'
+    required: true
+  terraform_cloud_token:
+    description: 'Terraform cloud token, if using Terraform cloud'
     required: false
-    default: 'none'
+  aws_access_key_id:
+    description: 'AWS key id, if using AWS'
+    required: false
+  aws_secret_access_key:
+    description: 'AWS access key, if using AWS'
+    required: false
 runs:
   using: 'docker'
   image: 'docker://optionalpaca/terraform-quality-gate'
   args:
     - ${{ inputs.terratest }}
-    - ${{ inputs.token}}
+    - ${{ inputs.terraform_cloud_token}}
+    - ${{ inputs.aws_access_key_id }}
+    - ${{ inputs.aws_secret_access_key}}

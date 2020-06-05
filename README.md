@@ -5,13 +5,25 @@ Terraform quality gate for Infrastructure-as-Code
 
 ### Example usage
 
+###### Terraform Cloud
 ```yaml
 - name: Terraform Quality Gate
-  uses: OptionAlpaca/terraform_quality_gate@0.1.1
+  uses: OptionAlpaca/terraform_quality_gate@0.1.14
   with:
     terratest: 'full'
-    token: 'xxxxxxxxxxxxxxxxxxxxxx'
+    terraform_cloud_token: 'xxxxxxxxxxxxxxxxxxxxxx'
 ```
+
+###### AWS
+```yaml
+- name: Terraform Quality Gate
+  uses: OptionAlpaca/terraform_quality_gate@0.1.14
+  with:
+    terratest: 'full'
+    aws_access_key_id: 'xxxxxxxxxxxxxxxxxxxxxx'
+    aws_secret_access_key: 'xxxxxxxxxxxxxxxxxx'
+```
+
 
 ### Arguments
 terratest: `none` or `full`

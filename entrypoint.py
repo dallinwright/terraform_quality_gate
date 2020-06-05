@@ -61,25 +61,9 @@ def call_os_command(command):
 def main():
     """
     Main program control, here we have entries for each command subset of quality gate
-    :return:
+    :return: none
     """
-    parser = argparse.ArgumentParser(description='Process some integers.')
     terraform_token_file = "/github/home/.terraform.d/credentials.tfrc.json"
-
-    parser.add_argument(
-        'terratest',
-        help='Whether we should include terratests',
-        default='none')
-    parser.add_argument(
-        '--terraform_cloud_token',
-        help='Cloud authentication token for terraform cloud, required if using terratest full')
-    parser.add_argument(
-        '--aws_access_key_id',
-        help='AWS Access Key ID')
-    parser.add_argument(
-        '--aws_secret_access_key',
-        help='AWS Secret Access Key')
-    args = parser.parse_args()
 
     stage = 'Terraform Format Check (terraform fmt)'
     logging.info('Calling {0}'.format(stage))
@@ -91,9 +75,9 @@ def main():
     call_os_command(['tflint', '-v'])
     call_os_command(['tflint'])
 
-    if args.terratest == 'full' and args.terraform_cloud_token:
+    if os.environ['INPUT_TERRATEST'] == 'full' and os.environ['INPUT_TERRAFORM_CLOUD_TOKEN']:
         logging.info('Writing auth token')
-        write_token(terraform_token_file, args.terraform_cloud_token)
+        write_token(terraform_token_file,  os.environ['INPUT_TERRAFORM_CLOUD_TOKEN'])
 
         logging.info('Installing go dependencies')
         call_os_command(

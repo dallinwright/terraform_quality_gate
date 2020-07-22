@@ -60,7 +60,8 @@ def call_os_command(command):
 
 def main():
     """
-    Main program control, here we have entries for each command subset of quality gate
+    Main program control, here we have entries for each command subset of quality gate.
+    The token file containers the credentials for the runner -> terraform cloud authentication
     :return: none
     """
     terraform_token_file = "/github/home/.terraform.d/credentials.tfrc.json"

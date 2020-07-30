@@ -12,10 +12,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Build & Publish
-        uses: docker/build-push-action@v1.1.0
+      #This Action Emits 2 Variables, IMAGE_SHA_NAME and IMAGE_URL
+      #which you can reference in subsequent steps
+      - name: Publish Docker Image to GPR
+        uses: machine-learning-apps/gpr-docker-publish@master
+        id: docker
         with:
-          registry: docker.pkg.github.com
-          tag_with_ref: true
-          username: dallinwright
-          password: ${{ secrets.GITHUB_TOKEN }}
+          IMAGE_NAME: 'terraform_quality_gate'
+          DOCKERFILE_PATH: 'Dockerfile'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Show outputs of previous step
+        run: |
+          echo "The name:tag of the Docker Image is: $VAR1"
+          echo "The docker image is hosted at $VAR2"
+        env:
+          VAR1: ${{ steps.docker.outputs.IMAGE_SHA_NAME }}

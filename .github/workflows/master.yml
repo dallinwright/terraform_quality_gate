@@ -16,5 +16,6 @@ jobs:
         uses: docker/build-push-action@v1.1.0
         with:
           registry: docker.pkg.github.com
+          tag_with_ref: true
           username: dallinwright
           password: ${{ secrets.GITHUB_TOKEN }}

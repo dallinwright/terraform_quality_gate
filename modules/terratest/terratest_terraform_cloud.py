@@ -1,6 +1,7 @@
 import json
 import os
 
+from modules.call_os_command import call_os_command
 from modules.logging import logger
 
 
@@ -25,12 +26,6 @@ def run_terraform_cloud_terratest():
 
     logger.info('Writing auth token')
     write_token(terraform_token_file, os.environ['INPUT_TERRAFORM_CLOUD_TOKEN'])
-
-    logger.info('Installing go dependencies')
-    call_os_command(
-        ['go', 'get', '-v', 'github.com/gruntwork-io/terratest/modules/terraform'])
-    call_os_command(
-        ['go', 'get', '-v', 'github.com/stretchr/testify/assert'])
 
     if os.path.isfile(terraform_token_file):
         stage = 'Terraform Integration Testing (terratest)'

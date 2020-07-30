@@ -25,10 +25,10 @@ def call_os_command(command):
     """
     child = subprocess.Popen(command, stdout=subprocess.PIPE)
     streamdata = child.communicate()[0]
-    data = streamdata.decode()
+    data = streamdata.decode('utf-8')
     rc = child.returncode
-    status_check(rc)
     if data:
         logger.info(data)
+        status_check(rc)
     else:
         return

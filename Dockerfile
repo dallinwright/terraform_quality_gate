@@ -29,6 +29,9 @@ COPY --from=install /terraform /usr/local/bin
 # Copies repository and mounts it for docker
 WORKDIR /github/workspace
 
+RUN go get -v github.com/stretchr/testify/assert
+RUN go get -v github.com/gruntwork-io/terratest/modules/terraform
+
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.py /entrypoint.py
 

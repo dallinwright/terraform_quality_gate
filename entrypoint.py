@@ -4,6 +4,7 @@ import sys
 
 from modules.call_os_command import call_os_command
 from modules.logging import logger
+from modules.terratest.terratest_aws import terratest_aws
 
 
 def main():
@@ -22,12 +23,12 @@ def main():
     call_os_command(['tflint', '-v'])
     call_os_command(['tflint'])
 
-    if os.environ['TERRATEST'] == 'full':
-        if os.environ['TERRAFORM_CLOUD_TOKEN']:
-            logger.info('terratest full and tf cloud')
-        else:
-            logger.info('terratest full but no cloud')
+    if os.environ.get('TERRATEST') is not None:
+        if os.environ.get('TERRATEST').upper() == 'AWS':
+            terratest_aws()
+            logger.info('terratest aws cloud')
 
+    logger.info('Terraform Quality Gate finished successfully!')
     sys.exit(0)
 
 

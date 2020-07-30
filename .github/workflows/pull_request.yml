@@ -16,3 +16,5 @@ jobs:
         uses: cclauss/GitHub-Action-for-pytest@master
         with:
           args: pytest -v
+      - name: Build & Publish
+        uses: docker/build-push-action@v1.1.0

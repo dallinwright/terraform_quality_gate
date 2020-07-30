@@ -12,6 +12,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
       #This Action Emits 2 Variables, IMAGE_SHA_NAME and IMAGE_URL
       #which you can reference in subsequent steps
       - name: Publish Docker Image to GPR
@@ -20,7 +23,7 @@ jobs:
         with:
           IMAGE_NAME: 'terraform_quality_gate'
           DOCKERFILE_PATH: 'Dockerfile'
-          TAG: ${{GITHUB_REF##*/}}
+          TAG: ${{ steps.get_version.outputs.VERSION }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Show outputs of previous step

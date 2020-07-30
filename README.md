@@ -1,5 +1,5 @@
 # Terraform Quality Gate
-![Publish](https://github.com/OptionAlpaca/terraform_quality_gate/workflows/Publish/badge.svg?branch=master)
+![Publish](https://github.com/dallinwright/terraform_quality_gate/workflows/Publish/badge.svg?branch=master)
 
 Terraform quality gate for Infrastructure-as-Code
 
@@ -26,7 +26,7 @@ Terraform quality gate for Infrastructure-as-Code
 
 
 ### Arguments
-terratest: `none` or `full`
+terratest: `AWS` or `terraform_cloud`
 terraform_cloud_token: Terraform token obtained from terraform login. Used for writing auth file as required. We suggest storing it in a github secret. Required if using terratest full.
 
 ### Purpose

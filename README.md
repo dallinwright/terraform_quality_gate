@@ -10,7 +10,7 @@ Terraform quality gate for Infrastructure-as-Code
 - name: Terraform Quality Gate
   uses: OptionAlpaca/terraform_quality_gate@0.1.14
   with:
-    terratest: 'full'
+    terratest: terraform_cloud
     terraform_cloud_token: 'xxxxxxxxxxxxxxxxxxxxxx'
 ```
 
@@ -19,7 +19,7 @@ Terraform quality gate for Infrastructure-as-Code
 - name: Terraform Quality Gate
   uses: OptionAlpaca/terraform_quality_gate@0.1.14
   with:
-    terratest: 'full'
+    terratest: AWS
     aws_access_key_id: 'xxxxxxxxxxxxxxxxxxxxxx'
     aws_secret_access_key: 'xxxxxxxxxxxxxxxxxx'
 ```

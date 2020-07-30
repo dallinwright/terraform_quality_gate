@@ -1,9 +1,11 @@
-from unittest import mock
+import json
+from contextlib import contextmanager
+from unittest.mock import patch, MagicMock
 
 import pytest
-from entrypoint import *
-from contextlib import contextmanager
-from unittest.mock import patch, mock_open, Mock, MagicMock
+
+from modules.call_os_command import status_check
+from modules.terratest.terratest_terraform_cloud import write_token
 
 
 @contextmanager
@@ -51,7 +53,7 @@ def test_write_token(tmpdir):
     filename = "output.json"
 
     # Test function is called, and file write is called with the following args
-    # This successfully tests the open functionality in the main function
+    # This successfully example_terratests the open functionality in the main function
 
     with patch("builtins.open", open_mock, create=True):
         write_token(filename, "test_token")
@@ -67,6 +69,3 @@ def test_write_token(tmpdir):
             print(content_string)
             print(expected_content_string)
             assert content_string == expected_content_string
-
-
-

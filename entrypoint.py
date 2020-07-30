@@ -5,6 +5,7 @@ import sys
 from modules.call_os_command import call_os_command
 from modules.logging import logger
 from modules.terratest.terratest_aws import terratest_aws
+from modules.terratest.terratest_terraform_cloud import terratest_terraform_cloud
 
 
 def main():
@@ -26,7 +27,11 @@ def main():
     if os.environ.get('TERRATEST') is not None:
         if os.environ.get('TERRATEST').upper() == 'AWS':
             terratest_aws()
-            logger.info('terratest aws cloud')
+        elif os.environ.get('TERRATEST').lower() == 'terraform_cloud':
+            terratest_terraform_cloud()
+        else:
+            logger.error('Terratest enabled but no valid cloud provider selected. Please consult README.md')
+            sys.exit(1)
 
     logger.info('Terraform Quality Gate finished successfully!')
     sys.exit(0)

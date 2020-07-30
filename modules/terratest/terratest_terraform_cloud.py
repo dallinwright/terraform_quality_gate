@@ -21,13 +21,13 @@ def write_token(terraform_token_file, token):
         json.dump(data, f, ensure_ascii=False, indent=4)
 
 
-def run_terraform_cloud_terratest():
-    terraform_token_file = "/github/home/.terraform.d/credentials.tfrc.json"
+def terratest_terraform_cloud():
+    terraform_token_file = "~/.terraform.d/credentials.tfrc.json"
 
     logger.info('Writing auth token')
-    write_token(terraform_token_file, os.environ['INPUT_TERRAFORM_CLOUD_TOKEN'])
+    write_token(terraform_token_file, os.environ['TERRAFORM_CLOUD_TOKEN'])
 
     if os.path.isfile(terraform_token_file):
-        stage = 'Terraform Integration Testing (terratest)'
+        stage = 'Terraform Cloug Integration Testing (terratest)'
         logger.info('Calling {0}'.format(stage))
         call_os_command(['go', 'test', '-v', './tests'])

@@ -8,7 +8,7 @@ Terraform quality gate for Infrastructure-as-Code
 ###### Terraform Cloud
 ```yaml
 - name: Terraform Quality Gate
-  uses: OptionAlpaca/terraform_quality_gate@0.1.14
+  uses: dallinwright/terraform_quality_gate@v0.0.2
   with:
     terratest: terraform_cloud
     terraform_cloud_token: 'xxxxxxxxxxxxxxxxxxxxxx'
@@ -17,7 +17,7 @@ Terraform quality gate for Infrastructure-as-Code
 ###### AWS
 ```yaml
 - name: Terraform Quality Gate
-  uses: OptionAlpaca/terraform_quality_gate@0.1.14
+  uses: dallinwright/terraform_quality_gate@v0.0.2
   with:
     terratest: AWS
     aws_access_key_id: 'xxxxxxxxxxxxxxxxxxxxxx'

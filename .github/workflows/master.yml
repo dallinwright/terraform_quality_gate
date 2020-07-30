@@ -20,7 +20,7 @@ jobs:
         with:
           IMAGE_NAME: 'terraform_quality_gate'
           DOCKERFILE_PATH: 'Dockerfile'
-          TAG: ${GITHUB_REF##*/}
+          TAG: ${{GITHUB_REF##*/}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Show outputs of previous step

@@ -23,7 +23,8 @@ jobs:
         with:
           IMAGE_NAME: 'terraform_quality_gate'
           DOCKERFILE_PATH: 'Dockerfile'
-          TAG: ${{ steps.get_version.outputs.VERSION }}
+          #          TAG: ${{ steps.get_version.outputs.VERSION }}
+          TAG: ${{ github.event.release.tag_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Show outputs of previous step

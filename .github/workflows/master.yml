@@ -16,7 +16,6 @@ jobs:
         uses: docker/build-push-action@v1.1.0
         with:
           registry: https://docker.pkg.github.com
-          repository: dallinwright/terraform_quality_gate
           tag_with_ref: true
           username: dallinwright
           password: ${{ secrets.GITHUB_TOKEN }}

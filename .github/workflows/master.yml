@@ -15,7 +15,7 @@ jobs:
       - name: Build & Publish
         uses: docker/build-push-action@v1.1.0
         with:
-          registry: https://docker.pkg.github.com
+          registry: docker.pkg.github.com
           tag_with_ref: true
           username: dallinwright
           password: ${{ secrets.GITHUB_TOKEN }}

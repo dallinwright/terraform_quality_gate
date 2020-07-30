@@ -12,7 +12,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - uses: jerray/publish-docker-action@master
+      - name: Build & Publish
+        uses: docker/build-push-action@v1.1.0
         with:
-          registry: docker.pkg.github.com
-          repository: dallinwright/terraform_quality_gate
+          tag_with_ref: true
+          repo-token: ${{ secrets.GITHUB_TOKEN }}

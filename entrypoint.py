@@ -24,10 +24,12 @@ def main():
     call_os_command(['tflint', '-v'])
     call_os_command(['tflint'])
 
-    if os.environ.get('TERRATEST') is not None:
-        if os.environ.get('TERRATEST').upper() == 'AWS':
+    if os.environ.get('INPUT_TERRATEST') is not None:
+        if os.environ.get('INPUT_TERRATEST').upper() == 'AWS':
+            os.environ["AWS_ACCESS_KEY_ID"] = os.environ.get('INPUT_AWS_ACCESS_KEY_ID')
+            os.environ["AWS_SECRET_ACCESS_KEY"] = os.environ.get('INPUT_AWS_SECRET_ACCESS_KEY')
             terratest_aws()
-        elif os.environ.get('TERRATEST').lower() == 'terraform_cloud':
+        elif os.environ.get('INPUT_TERRATEST').lower() == 'terraform_cloud':
             terratest_terraform_cloud()
         else:
             logger.error('Terratest enabled but no valid cloud provider selected. Please consult README.md')

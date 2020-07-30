@@ -6,23 +6,23 @@ branding:
   icon: 'award'
   color: 'purple'
 inputs:
-  terratest:
+  TERRATEST:
     description: 'Should include Terratests'
     required: true
-  terraform_cloud_token:
+  TF_CLOUD_TOKEN:
     description: 'Terraform cloud token, if using Terraform cloud'
     required: false
-  aws_access_key_id:
+  AWS_ACCESS_KEY_ID:
     description: 'AWS key id, if using AWS'
     required: false
-  aws_secret_access_key:
+  AWS_SECRET_ACCESS_KEY:
     description: 'AWS access key, if using AWS'
     required: false
 runs:
   using: 'docker'
   image: 'docker://dallinwright/terraform-quality-gate'
   args:
-    - ${{ inputs.terratest }}
-    - ${{ inputs.terraform_cloud_token}}
-    - ${{ inputs.aws_access_key_id }}
-    - ${{ inputs.aws_secret_access_key}}
+    - ${{ inputs.TERRATEST }}
+    - ${{ inputs.TF_CLOUD_TOKEN}}
+    - ${{ inputs.AWS_ACCESS_KEY_ID }}
+    - ${{ inputs.AWS_SECRET_ACCESS_KEY}}

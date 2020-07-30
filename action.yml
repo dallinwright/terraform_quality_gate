@@ -20,7 +20,7 @@ inputs:
     required: false
 runs:
   using: 'docker'
-  image: 'docker://dallinwright/terraform-quality-gate'
+  image: 'docker://dallinwright/terraform-quality-gate@0.0.3'
   args:
     - ${{ inputs.terratest }}
     - ${{ inputs.terraform_cloud_token}}

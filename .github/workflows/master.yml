@@ -12,10 +12,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Build & Publish
-        uses: docker/build-push-action@v1.1.0
+      - uses: jerray/publish-docker-action@master
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: dallinwright/terraform-quality-gate
-          tag_with_ref: true
+          registry: docker.pkg.github.com
+          repository: dallinwright/terraform_quality_gate
